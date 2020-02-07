@@ -6,7 +6,6 @@ export const vadarService= (sentence)=>{
           "accept":'application/json'
         },
        
-    
     })
     .then(resp=>resp.json())
     .then(data=>data)
