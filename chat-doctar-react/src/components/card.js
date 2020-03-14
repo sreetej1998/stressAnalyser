@@ -22,7 +22,7 @@ const useStyles = makeStyles({
 export default function MediaCard(props) {
   const classes = useStyles();
   const sendMail= ()=>{
-    sgMail.setApiKey('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');
+    sgMail.setApiKey('');
     const msg = {
       to: 'sreetejreddy1998@gmail.com',
       from: 'sreetejreddy1998@gmail.com',
