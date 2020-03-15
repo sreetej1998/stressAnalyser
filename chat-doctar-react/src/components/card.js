@@ -9,7 +9,10 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import book from './selfhelp/book1.jpeg';
+import {mailService} from '../services/MailService'
 const sgMail = require('@sendgrid/mail');
+
+
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
@@ -19,19 +22,12 @@ const useStyles = makeStyles({
   },
 });
 
+
 export default function MediaCard(props) {
   const classes = useStyles();
-  const sendMail= ()=>{
-    sgMail.setApiKey('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');
-    const msg = {
-      to: 'sreetejreddy1998@gmail.com',
-      from: 'sreetejreddy1998@gmail.com',
-      subject: 'your fried is in depression please help',
-      text: 'and easy to do anywhere, even with Node.js',
-      html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-    };
-    sgMail.send(msg);
-  }
+const send=()=>{
+mailService()
+}
 
   return (
     <Card className={classes.root}>
@@ -51,7 +47,7 @@ export default function MediaCard(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary" onClick={sendMail}>
+        <Button size="small" color="primary" onClick={send}>
           Share
         </Button>
         <Button size="small" color="primary" onClick={()=>window.open(`${props.buy}`)}>
