@@ -5,9 +5,7 @@ export const vadarService= (sentence)=>{
           "content-type":'application/json',
           "accept":'application/json'
         },
-       
     })
     .then(resp=>resp.json())
-    .then(data=>data)
     return vadarReport;
 }
