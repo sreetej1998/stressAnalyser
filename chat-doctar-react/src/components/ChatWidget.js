@@ -17,7 +17,7 @@ const ChatWidget=(props)=>{
     },[])
 
     const sendMail= ()=>{
-      sgMail.setApiKey('SG.PGzz49Z6TvOfVr5w1n3Low.TuUw6pAGLxdKVfFp13gt9IiXLMZyHypxDFgal9sbr2gSG.PGzz49Z6TvOfVr5w1n3Low.TuUw6pAGLxdKVfFp13gt9IiXLMZyHypxDFgal9sbr2g');
+      sgMail.setApiKey('');
       const msg = {
         to: 'test@example.com',
         from: 'test@example.com',
@@ -68,7 +68,7 @@ const ChatWidget=(props)=>{
     return (<div>
          <Widget
          title="Chat doctor"
-         subtitle="having fun chat with akhil?"
+         subtitle="emotions are displayed in bargraph"
         //  fullScreenMode={true}
           handleNewUserMessage={handleNewUserMessage}
         />

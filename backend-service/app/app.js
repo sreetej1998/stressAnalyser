@@ -19,7 +19,6 @@ io.on('connection', function(socket){
       socket.broadcast.to('room').emit('chat',payload)
       
   })
-
 });
 
 http.listen(3001, function(){

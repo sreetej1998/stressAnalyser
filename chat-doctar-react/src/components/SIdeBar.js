@@ -1,119 +1,60 @@
 import React from 'react';
-import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-const drawerWidth = 240;
+import Tabs from '@material-ui/core/Tabs';
+import { withStyles } from '@material-ui/core';
+import { fade, makeStyles } from '@material-ui/core/styles';
+import Tab from '@material-ui/core/Tab';
+
 const useStyles = makeStyles(theme => ({
-    root: {
-      display: 'flex',
+    tab:{
+        width:'290px',
+        elevation:'50deg',
+        boxShadow: '1px 0 0 0 #f1f1f3',
+        backgroundColor:'#ffffff'
     },
-    appBar: {
-      transition: theme.transitions.create(['margin', 'width'], {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
-    },
-    appBarShift: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth,
-      transition: theme.transitions.create(['margin', 'width'], {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-    },
-    menuButton: {
-      marginRight: theme.spacing(2),
-    },
-    hide: {
-      display: 'none',
-    },
-    drawer: {
-      width: drawerWidth,
-      flexShrink: 0,
-      zIndex:0
+    Tabs:{
+      boxShadow: '1px 0 0 0 #f1f1f3',
+        marginTop:'8%',
       
-    },
-    drawerPaper: {
-      width: drawerWidth,
-      backgroundColor:'#24292e'
-    },
-    drawerHeader: {
-      display: 'flex',
-      alignItems: 'center',
-      padding: theme.spacing(0, 1),
-      ...theme.mixins.toolbar,
-      justifyContent: 'flex-end',
-    },
-    content: {
-      flexGrow: 1,
-      padding: theme.spacing(3),
-      transition: theme.transitions.create('margin', {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
-      marginLeft: -drawerWidth,
-    },
-    contentShift: {
-      transition: theme.transitions.create('margin', {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      marginLeft: 0,
-    },
-  }));
+        },
+        font:{
+            color:'black',
+            textTransform:'none',
+          
+        },
+        ind:{
+            backgroundColor:'#1665D8',
+            },
+
+            wrapper:{
+              marginLeft:theme.spacing(2),
+              alignItems:'flex-start',
+              fontWeight:200
+            }
+}))
+
+function a11yProps(index) {
+    return {
+      id: `simple-tab-${index}`,
+      'aria-controls': `simple-tabpanel-${index}`,
+      
+    };
+  }
+
 const SideBar=(props)=>{
-    const classes = useStyles();
-    const theme = useTheme();
-    return (<div>
- <Drawer
-        className={classes.drawer}
-        variant="persistent"
-        anchor="left"
-        open={props.open}
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-      >
-        <div className={classes.drawerHeader}>
-          <IconButton onClick={props.handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
-        </div>
-        <Divider />
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon color="secondary"/> : <MailIcon color="secondary"/>}</ListItemIcon>
-              <ListItemText primary={text} style={{color:'white'}}/>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon color="secondary"/> : <MailIcon color="secondary"/>}</ListItemIcon>
-              <ListItemText primary={text} style={{color:'white'}}/>
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
-    </div>);
+    const classes=useStyles();
+
+  
+    return ( <div className={classes.tab}>
+        <Tabs value={props.value} onChange={props.handleChange} aria-label="simple tabs example" 
+        orientation="vertical" textColor="primary" classes={{indicator:classes.ind}} className={classes.Tabs}>
+          <Tab label="MAIN MENU" {...a11yProps(0)} classes={{wrapper:classes.wrapper}} disabled={true} />
+          <Tab label="Bargraph" {...a11yProps(1)}  className={classes.font}  classes={{wrapper:classes.wrapper}}/>
+          <Tab label="suggestions  " {...a11yProps(2)}  className={classes.font} classes={{wrapper:classes.wrapper}}/>
+          <Tab label="  " {...a11yProps(3)}  className={classes.font} classes={{wrapper:classes.wrapper}}/>
+          <Tab label="  " {...a11yProps(4)}  className={classes.font} classes={{wrapper:classes.wrapper}}/>
+          <Tab label="  " {...a11yProps(5)}  className={classes.font} classes={{wrapper:classes.wrapper}}/>
+        </Tabs>
+        </div>)
 }
 
 export default SideBar;

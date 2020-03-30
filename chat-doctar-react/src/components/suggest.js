@@ -7,9 +7,9 @@ import {bookInfo} from './utils/constants';
 
 const useStyles = makeStyles(theme => ({
     cont:{
-      display:'flex',
-      justifyContent:'space-around',
-      flexWrap:'wrap'
+      display:'grid',
+      gridTemplateColumns:'1fr 1fr 1fr'
+   
     }
    }));
 const Suggest=()=>{

@@ -16,6 +16,9 @@ const sgMail = require('@sendgrid/mail');
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
+    marginRight:'10%',
+    marginLeft:'10%',
+    marginBottom:'10%'
   },
   media: {
     height: 140,

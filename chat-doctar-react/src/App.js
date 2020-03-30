@@ -27,13 +27,24 @@ marginTop:"3%"
    display:'flex',
    marginTop:"5%"
 
- }
+ },
+ orient2:{
+  display:'grid',
+  marginTop:"5%",
+  gridTemplateColumns:'1fr 1fr'
+
+}
 
 }));
 
 function App() {
   const [open, setOpen] = React.useState(false);
   const [happy,setHappy]=React.useState(2);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+  const [value,setValue]=React.useState(1);
   const [emotion,setEmotion]=React.useState([
     {text: 'Positive', value: 100}, 
     {text: 'Negitive', value: 300},
@@ -45,6 +56,7 @@ function App() {
 
   
 const classes=useStyles();
+
 const img=[<img src={sad} height="200" width="200" className={classes.img}/>,<img src={happyimg} height="200" width="200" className={classes.img}/>,
 <img src={neutral} height="200" width="200" className={classes.img}/>]
   const handleDrawerOpen = () => {
@@ -55,20 +67,28 @@ const img=[<img src={sad} height="200" width="200" className={classes.img}/>,<im
 const handleDrawerClose = () => {
     setOpen(false);
   };
-
+  const arr=[ <div className={classes.orient2} >
+    <div>{img[happy]}</div>
+    <Example emotion={emotion}/></div>,<Suggest/>]
   return (
   <div>
     {auth?
     <div>
   <AppBar handleDrawerOpen={handleDrawerOpen} />
-    <SideBar handleDrawerClose={handleDrawerClose} open={open}/>
+    
     <ChatWidget setHappy={setHappy} setEmotion={setEmotion}/> 
-    }
-  <div className={classes.orient} >
-{img[happy]}
-<Example emotion={emotion}/></div>
-<Suggest/>
-</div>:<Auth setAuth={setAuth}/>}
+    <div className={classes.orient}>
+    <SideBar handleDrawerClose={handleDrawerClose} open={open} value={value} handleChange={handleChange}/>
+    
+  {/* <div className={classes.orient} >
+
+ <div>{img[happy]}</div>
+<Example emotion={emotion}/></div> */}
+{arr[value-1]}
+</div>
+{/* <Suggest/> */}
+</div>
+:<Auth setAuth={setAuth}/>}
   </div>
   );
 }
